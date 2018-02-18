@@ -12,7 +12,6 @@ module AWSViaHaskell
     ( module AWSViaHaskell.Classes
     , module AWSViaHaskell.Prelude
     , module AWSViaHaskell.Service
-    , module AWSViaHaskell.TH
     , module AWSViaHaskell.Types
     , module AWSViaHaskell.Util
     ) where
@@ -20,6 +19,5 @@ module AWSViaHaskell
 import           AWSViaHaskell.Classes
 import           AWSViaHaskell.Prelude
 import           AWSViaHaskell.Service
-import           AWSViaHaskell.TH
 import           AWSViaHaskell.Types
 import           AWSViaHaskell.Util

@@ -1,17 +1,3 @@
-{-|
-Module      : AWSViaHaskell.Types
-Description : Support types
-Copyright   : (C) Richard Cook, 2017
-License     : MIT
-Maintainer  : rcook@rcook.org
-Stability   : experimental
-Portability : portable
-
-This modules provides support types for the "AWS via Haskell" project.
--}
-
-{-# LANGUAGE TemplateHaskell #-}
-
 module AWSViaHaskell.Types
     ( Session(..)
     , sEnv
@@ -19,12 +5,24 @@ module AWSViaHaskell.Types
     , sService
     ) where
 
-import           Control.Lens (makeLenses)
-import           Network.AWS (Env, Region, Service)
+import Protolude
+import Control.Lens (Lens')
+import Network.AWS (Env, Region, Service)
 
 data Session = Session
-    { _sEnv :: Env
-    , _sRegion :: Region
+    { _sEnv     :: Env
+    , _sRegion  :: Region
     , _sService :: Service
     }
-makeLenses ''Session
+
+sEnv :: Lens' Session Env
+sEnv f s@Session {..}     =
+  (\e -> s { _sEnv = e }) <$> f _sEnv
+
+sRegion :: Lens' Session Region
+sRegion f s@Session {..}  =
+  (\r -> s { _sRegion = r }) <$> f _sRegion
+
+sService :: Lens' Session Service
+sService f s@Session {..} =
+  (\s' -> s { _sService = s' }) <$> f _sService

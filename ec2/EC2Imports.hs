@@ -21,7 +21,7 @@ module EC2Imports
     , describeKeyPairs
     , describeSecurityGroups
     , deseImageIds
-    , desrsImages
+    , diirsImages
     , diiInstanceIds
     , dirsReservations
     , disInstanceIds

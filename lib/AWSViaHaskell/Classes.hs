@@ -1,30 +1,23 @@
-{-|
-Module      : AWSViaHaskell.Classes
-Description : Service and session type classes
-Copyright   : (C) Richard Cook, 2017
-License     : MIT
-Maintainer  : rcook@rcook.org
-Stability   : experimental
-Portability : portable
-
-This modules provides service and session type classes for the "AWS via Haskell" project.
--}
-
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE TypeFamilies #-}
 
 module AWSViaHaskell.Classes
     ( ServiceClass(..)
     , SessionClass(..)
+    , HasEnv (..)
     ) where
 
-import           AWSViaHaskell.Types
-import           Network.AWS (Service)
+import AWSViaHaskell.Types
+import Control.Lens (Lens')
+import Network.AWS (Env, Service)
 
 class ServiceClass a where
-    type TypedSession a :: *
-    rawService :: a -> Service
-    wrappedSession :: Session -> TypedSession a
+  type TypedSession a :: *
+  rawService     ::       a -> Service
+  wrappedSession :: Session -> TypedSession a
 
 class SessionClass a where
-    rawSession :: a -> Session
+  rawSession :: a -> Session
+
+class HasEnv env where
+  envL :: Lens' env Env

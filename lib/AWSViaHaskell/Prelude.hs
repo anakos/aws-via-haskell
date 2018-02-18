@@ -1,19 +1,9 @@
-{-|
-Module      : AWSViaHaskell.Prelude
-Description : Re-exports of most commonly used Amazonka functions
-Copyright   : (C) Richard Cook, 2017
-License     : MIT
-Maintainer  : rcook@rcook.org
-Stability   : experimental
-Portability : portable
-
-This module provides re-exports of most commonly used Amazonka functions as well as lens and error-handling functions.
--}
-
 module AWSViaHaskell.Prelude
     ( (^.)
     , (&)
     , (.~)
+    , (<&>)
+    , Lens'
     , _ServiceError
     , AsError
     , Credentials(..)
@@ -23,11 +13,19 @@ module AWSViaHaskell.Prelude
     , hasCode
     , hasStatus
     , send
+    , set
     , sinkBody
     , toText
     ) where
 
-import           Control.Lens ((^.), (&), (.~))
+import           Control.Lens
+                   ( (^.)
+                   , (&)
+                   , (.~)
+                   , (<&>)
+                   , Lens'
+                   , set
+                   )
 import           Network.AWS
                     ( _ServiceError
                     , AsError
